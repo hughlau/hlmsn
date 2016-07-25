@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+    default-lazy-init="true">
+
+	<!-- 自定义realm -->
+    <bean id="myRealm" class="com.hl.shiro.MyRealm" />
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
+        <property name="realm" ref="myRealm"/>  
+    </bean>  
+    
+    <bean id="myFormAuthenticationFilter" class="com.hl.shiro.MyFormAuthenticationFilter"/>
+
+	<!-- 配置shiro的过滤器工厂类，id- shiroFilter要和我们在web.xml中配置的过滤器一致 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl" value="/index" />
+        <property name="successUrl" value="/admin/index" />
+        <property name="unauthorizedUrl" value="/index" />
+        
+        <property name="filters">    
+           <map>    
+               <entry key="authc" value-ref="myFormAuthenticationFilter"/>  
+           </map>    
+        </property>    
+        <!-- 自定义权限配置 -->
+        <property name="filterChainDefinitionMap" ref="chainDefinitionSectionMetaSource" />
+    </bean>
+	
+	<!--自定义filterChainDefinitionMap -->
+    <bean id="chainDefinitionSectionMetaSource" class="com.hl.shiro.ChainDefinitionSectionMetaSource">
+        <property name="filterChainDefinitions">
+            <value>
+
+                /res/** = anon
+                /error/** = anon
+                /index=anon
+                /login = anon
+                /register =anon
+                /**=authc
+            </value>
+        </property>
+    </bean>
+    
+    <!-- 会话DAO -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+        <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+    </bean>
+
+    <!-- 会话验证调度器 -->
+     <!-- 全局的会话信息检测扫描信息间隔30分钟-->
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+        <property name="sessionValidationInterval" value="1800000"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+    
+     <!-- 会话管理器 -->
+      <!-- 全局的会话信息设置成30分钟,sessionValidationSchedulerEnabled参数就是是否开启扫描  -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="globalSessionTimeout" value="1800000"/>
+        <property name="deleteInvalidSessions" value="true"/>
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+        <property name="sessionDAO" ref="sessionDAO"/>
+    </bean>
+    
+    <!--shiro缓存管理器 -->
+    <bean id="cacheManager" class="com.hl.shiro.SpringCacheManagerWrapper" >
+        <property name="cacheManager" ref="springCacheManager"/>
+    </bean>
+    
+    <bean id="springCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcacheManager"/>
+    </bean>
+    
+    <!--ehcache-->
+    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+    </bean>
+    
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->  
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+</beans>
