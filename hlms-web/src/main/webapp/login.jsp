@@ -126,7 +126,7 @@
 
 				<label class="checkbox">
 
-				<input type="checkbox" name="remember" value="1"/> 记住我
+				<input type="checkbox" name="remember" value="true"/> 记住我
 
 				</label>
 

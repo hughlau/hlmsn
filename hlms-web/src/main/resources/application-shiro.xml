@@ -15,7 +15,7 @@
         <property name="realm" ref="myRealm"/>  
     </bean>  
     
-    <bean id="myFormAuthenticationFilter" class="com.hl.shiro.MyFormAuthenticationFilter"/>
+    <bean id="myFormAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter"/>
 
 	<!-- 配置shiro的过滤器工厂类，id- shiroFilter要和我们在web.xml中配置的过滤器一致 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -43,7 +43,8 @@
                 /index=anon
                 /login = anon
                 /register =anon
-                /**=authc
+                /logout=logout
+                /**=user
             </value>
         </property>
     </bean>

@@ -16,7 +16,7 @@ public class Hl_UserServiceImpl extends BaseServiceImpl<Hl_User> implements Hl_U
 		String password=usermap.getStr("LoginPassword");
 		String salt=NumberUtil.getUUID();
 		usermap.set("Salt", salt);
-		password=CiphertextUtil.passAlgorithmsCiphering(password, salt, "SHA384");
+		password=CiphertextUtil.passAlgorithmsCiphering(password, salt, "SHA");
 		usermap.set("LoginPassword", password);
 		try {
 			addEntity(usermap);

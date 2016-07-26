@@ -1,5 +1,5 @@
 require.config({
-	baseUrl:'res',
+	baseUrl:'../res',
     paths: {
         jquery: 'lib/jquery-1.10.1.min',
 		bootstrap:'lib/bootstrap.min',

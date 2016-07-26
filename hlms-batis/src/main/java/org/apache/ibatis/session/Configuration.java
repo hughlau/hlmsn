@@ -167,7 +167,7 @@ public class Configuration {
 
 	public static final String FIELD = "field";
 
-	public static final String LY_TABLE = "ly_table";
+	public static final String DB_TABLE = "db_table";
 
 	public static final String FINDBYWHERE = "findByWhere";
 

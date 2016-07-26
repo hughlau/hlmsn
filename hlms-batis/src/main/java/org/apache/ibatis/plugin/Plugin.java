@@ -129,7 +129,7 @@ public class Plugin implements InvocationHandler {
 		Map<String, Object> mapfield=null;
 		String field = null;
 		if (null != formMap) {
-			table = formMap.get("ly_table");
+			table = formMap.get("db_table");
 			mapfield=(Map<String, Object>) EhcacheUtils.get(table);
 			field = mapfield.get("field").toString();
 			sql = " select "+field+" from " + String.valueOf(table);
@@ -177,7 +177,7 @@ public class Plugin implements InvocationHandler {
 			sql = "delete from " + table.toString() + " where ";
 			String param = "";
 			for (Entry<String, Object> entry : formMap.entrySet()) {
-				if (!"ly_table".equals(entry.getKey()) && null != entry.getValue()
+				if (!"db_table".equals(entry.getKey()) && null != entry.getValue()
 						&& !"_t".equals(entry.getKey()))
 					param += " and " + entry.getKey() + " in (" + entry.getValue() + ")";
 			}
@@ -271,7 +271,7 @@ public class Plugin implements InvocationHandler {
 
 		} else if (Configuration.BATCHSAVE.equals(sqlId)) {
 			if (null != formMaps && formMaps.size() > 0) {
-				table = Common.toHashMap(formMaps.get(0)).get(Configuration.LY_TABLE);
+				table = Common.toHashMap(formMaps.get(0)).get(Configuration.DB_TABLE);
 				mapfield = (Map<String, Object>) EhcacheUtils.get(table);
 				field = mapfield.get(Configuration.FIELD).toString();
 			}

@@ -83,7 +83,7 @@
 
 		<!-- BEGIN REGISTRATION FORM -->
 
-		<form class="form-vertical" action="register">
+		<form class="form-vertical" action="register" id="register" method="post">
 
 			<h3 class="form-title">注 册</h3>
 

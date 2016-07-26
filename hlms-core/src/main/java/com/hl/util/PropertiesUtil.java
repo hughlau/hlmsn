@@ -2,6 +2,8 @@ package com.hl.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 import java.util.Properties;
 
@@ -122,13 +124,15 @@ public class PropertiesUtil {
 	 * @since wapportal_manager version(2.0)
 	 */
 	private static Properties loadPropertyFile(String propertyFilePath) {
-		java.io.InputStream is = PropertiesUtil.class
-				.getResourceAsStream(propertyFilePath);
-		if (is == null) {
-			return loadPropertyFileByFileSystem(propertyFilePath);
-		}
+//		java.io.InputStream is = PropertiesUtil.class
+//				.getResourceAsStream(propertyFilePath);
+		java.io.InputStreamReader is = null;
 		Properties ppts = new Properties();
 		try {
+			is = new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(propertyFilePath), "UTF-8");
+			if (is == null) {
+				return loadPropertyFileByFileSystem(propertyFilePath);
+			}
 			ppts.load(is);
 			return ppts;
 		} catch (Exception e) {

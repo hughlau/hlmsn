@@ -9,6 +9,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.hl.sqlutil.BaseEntityMap;
 import com.hl.sqlplugin.PageView;
+import com.hl.util.PropertiesUtil;
 
 public class BaseController {
 
@@ -93,5 +94,12 @@ public class BaseController {
 	            e.printStackTrace();
 	        }
 	        return  t;
+	    }
+	    
+	    
+	    public String getTipMsg(String key){
+	    	String path = "/props/message.properties";
+			String value = PropertiesUtil.getValue(path, key);
+			return value;
 	    }
 }

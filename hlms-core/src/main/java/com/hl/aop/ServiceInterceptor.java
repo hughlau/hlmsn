@@ -42,17 +42,17 @@ public class ServiceInterceptor {
 		
 		// 在后台中输出错误异常异常信息，通过log4j输出。  
         Logger log = Logger.getLogger(joinPoint.getTarget().getClass().getSimpleName());  
-        log.info("**************************************************************");  
-        log.info("Error happened in class: " + joinPoint.getTarget().getClass().getSimpleName());  
-        log.info("Error happened in method: " + joinPoint.getSignature().getName());  
+        log.error("**************************************************************");  
+        log.error("Error happened in class: " + joinPoint.getTarget().getClass().getSimpleName());  
+        log.error("Error happened in method: " + joinPoint.getSignature().getName());  
             for (int i = 0; i < args.length; i++)  
             {  
-                log.info("arg[" + i + "]: " + args[i]);  
+                log.error("arg[" + i + "]: " + args[i]);  
             }  
-        log.info("Exception class: " + ex.getClass().getName());  
-        log.info("ex.getMessage():" + ex.getMessage());  
+        log.error("Exception class: " + ex.getClass().getName());  
+        log.error("ex.getMessage():" + ex.getMessage());  
         ex.printStackTrace();  
-        log.info("**************************************************************");  
+        log.error("**************************************************************");  
   
         ex.printStackTrace();
         throw new BusinessException(ex.getClass().getName());

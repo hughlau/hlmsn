@@ -54,7 +54,7 @@
 		line-height:20px;
 	}
 	</style>
-	<script data-main="res/js/main" src="res/lib/require.js"></script>
+	<script data-main="../res/js/main" src="../res/lib/require.js"></script>
 </head>
 
 <!-- END HEAD -->
@@ -77,7 +77,7 @@
 
 				<a class="brand" href="myindex.html" style="color:yellow;font-size:50px;">
 
-				CUSSM
+				HLMS
 
 				</a>
 
@@ -174,7 +174,7 @@
 
 				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-				<img src="res/image/menu-toggler.png" alt="" />
+				<img src="../res/image/menu-toggler.png" alt="" />
 
 				</a>          
 
@@ -194,7 +194,7 @@
 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-						<img alt="" src="res/image/avatar1_small.jpg" />
+						<img alt="" src="../res/image/avatar1_small.jpg" />
 
 						<span class="username">Bob Nilson</span>
 
@@ -216,7 +216,7 @@
 
 							<li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a></li>
 
-							<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+							<li><a href="../logout"><i class="icon-key"></i> Log Out</a></li>
 
 						</ul>
 

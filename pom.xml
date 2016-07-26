@@ -14,5 +14,6 @@
     <module>hlms-business</module>
     <module>hlms-web</module>
     <module>hlms-dao</module>
+    <module>hlms-facade</module>
   </modules>
 </project>
