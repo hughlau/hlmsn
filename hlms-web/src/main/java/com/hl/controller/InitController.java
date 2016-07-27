@@ -97,8 +97,8 @@ public class InitController extends BaseController{
 			Hl_User item=new Hl_User();
 			item.set("LoginName", user.getUsername());
 			item.set("LoginPassword", user.getPassword());
-			item.set("Email", user.getPassword());
-			item.set("Phone", user.getPassword());
+			item.set("Email", user.getEmail());
+			item.set("Phone", user.getPhone());
 			item.set("CreateUser","0");
 			hl_UserService.addUser(item);;
 		} 

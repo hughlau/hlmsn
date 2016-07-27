@@ -1,12 +1,16 @@
 package com.hl.service.impl;
 
 
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Service;
 
 import com.hl.entity.Hl_User;
 import com.hl.service.Hl_UserService;
-import com.hl.util.CiphertextUtil;
-import com.hl.util.NumberUtil;
+
+
+
 
 @Service("hl_UserService")
 public class Hl_UserServiceImpl extends BaseServiceImpl<Hl_User> implements Hl_UserService{
@@ -14,10 +18,10 @@ public class Hl_UserServiceImpl extends BaseServiceImpl<Hl_User> implements Hl_U
 	public void addUser(Hl_User usermap) {
 		// TODO Auto-generated method stub
 		String password=usermap.getStr("LoginPassword");
-		String salt=NumberUtil.getUUID();
+		String salt=new SecureRandomNumberGenerator().nextBytes().toHex();
 		usermap.set("Salt", salt);
-		password=CiphertextUtil.passAlgorithmsCiphering(password, salt, "SHA");
-		usermap.set("LoginPassword", password);
+		String newPassword = new SimpleHash("md5", password, ByteSource.Util.bytes(salt), 2).toHex();
+		usermap.set("LoginPassword", newPassword);
 		try {
 			addEntity(usermap);
 		} catch (Exception e) {

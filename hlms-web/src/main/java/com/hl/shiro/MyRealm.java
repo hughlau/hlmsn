@@ -57,11 +57,14 @@ public class MyRealm extends AuthorizingRealm {
            e.printStackTrace();
         }
 	    if(userFormMaps.size()!=0){
+
 	        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, // 用户名
-                    userFormMaps.get(0).get("LoginPassword"), // 密码
-                    ByteSource.Util.bytes(""),
-                    getName() // realm name
-            );
+					userFormMaps.get(0).get("LoginPassword"), // 密码
+					ByteSource.Util.bytes(userFormMaps.get(0).get("Salt")),// salt=username+salt
+					getName() // realm name
+			);
+	        
+
             Session session = SecurityUtils.getSubject().getSession();
             session.setAttribute("userSession", userFormMaps.get(0));
             session.setAttribute("userSessionId", userFormMaps.get(0).get("ID"));

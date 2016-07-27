@@ -1,6 +1,8 @@
 package com.hl.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 
 public class CiphertextUtil {
 
@@ -11,15 +13,14 @@ public class CiphertextUtil {
      * @param algorithmsName 算法名称(如:MD2,SHA,SHA256,SHA384,SHA512)
      * @return
      */
-    public static String passAlgorithmsCiphering(String sourceStr,String salt,String algorithmsName){
-        sourceStr=sourceStr+salt;
+    public static String passAlgorithmsCiphering(String sourceStr,String algorithmsName){
         String password = "";
         switch(algorithmsName){
             case "MD5":
-                password = DigestUtils.md5Hex(sourceStr);
+            	password = DigestUtils.md5Hex(sourceStr);
                 break;
             case "SHA":
-                password = DigestUtils.shaHex(sourceStr);
+            	password = DigestUtils.sha1Hex(sourceStr);
                 break;
             case "SHA256":
                 password = DigestUtils.sha256Hex(sourceStr);

@@ -9,8 +9,21 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
     default-lazy-init="true">
 
+
+	<bean id="credentialsMatcher"
+		class="com.hl.shiro.RetryLimitHashedCredentialsMatcher">
+
+		<property name="hashAlgorithmName" value="md5" />
+		<property name="hashIterations" value="2" />
+		<property name="storedCredentialsHexEncoded" value="true" />
+	</bean>
+
 	<!-- 自定义realm -->
-    <bean id="myRealm" class="com.hl.shiro.MyRealm" />
+    <bean id="myRealm" class="com.hl.shiro.MyRealm">
+
+    	<property name="credentialsMatcher" ref="credentialsMatcher" />
+    	<property name="cachingEnabled" value="false" />
+    </bean>
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
         <property name="realm" ref="myRealm"/>  
     </bean>  
@@ -39,6 +52,7 @@
             <value>
 
                 /res/** = anon
+                /respage/** = anon
                 /error/** = anon
                 /index=anon
                 /login = anon
