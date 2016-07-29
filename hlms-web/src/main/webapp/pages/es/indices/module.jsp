@@ -3,53 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Slate Theme, About Our Company</title>
-<link href="../respage/css/templatemo_style.css" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" href="../respage/css/nivo-slider.css" type="text/css" media="screen" />
-
-<script language="javascript" type="text/javascript">
-function clearText(field){
-
-    if (field.defaultValue == field.value) field.value = '';
-    else if (field.value == '') field.value = field.defaultValue;
-
-}
-</script>
-
-<link rel="stylesheet" type="text/css" href="../respage/css/ddsmoothmenu.css" />
-
-<script type="text/javascript" src="../respage/js/jquery.min.js"></script>
-<script type="text/javascript" src="../respage/js/ddsmoothmenu.js">
-
-/***********************************************
-* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-* This notice MUST stay intact for legal use
-* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-***********************************************/
-
-</script>
-
-<script type="text/javascript">
-
-ddsmoothmenu.init({
-	mainmenuid: "templatemo_menu", //menu DIV id
-	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-	classname: 'ddsmoothmenu', //class added to menu's outer DIV
-	//customtheme: ["#1c5a80", "#18374a"],
-	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
-})
-
-</script>
+<jsp:include page="../../common/head.jsp" />
 
 </head>
 
 <body>
 
 <div id="templatemo_wrapper">
-	<jsp:include page="../../commonpage/header.jsp" />
-    
+	<jsp:include page="../../common/header.jsp" />
+    <div>当前位置：索引>模板管理</div>
     <div id="templatemo_main">
     	<div id="content" class="float_l">
             <h2>Our History</h2>
@@ -91,7 +53,7 @@ ddsmoothmenu.init({
         <div class="cleaner"></div>
     </div>
     
-    <jsp:include page="../../commonpage/footer.jsp" />
+    <jsp:include page="../../common/footer.jsp" />
 </div>
 
 </body>

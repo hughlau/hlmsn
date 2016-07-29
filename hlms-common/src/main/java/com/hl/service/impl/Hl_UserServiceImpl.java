@@ -13,7 +13,7 @@ import com.hl.service.Hl_UserService;
 
 
 @Service("hl_UserService")
-public class Hl_UserServiceImpl extends BaseServiceImpl<Hl_User> implements Hl_UserService{
+public class Hl_UserServiceImpl extends BaseServiceImpl implements Hl_UserService{
 
 	public void addUser(Hl_User usermap) {
 		// TODO Auto-generated method stub

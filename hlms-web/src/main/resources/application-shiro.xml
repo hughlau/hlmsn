@@ -54,6 +54,8 @@
                 /res/** = anon
                 /respage/** = anon
                 /error/** = anon
+                /es/**=anon
+                /pages/**=anon
                 /index=anon
                 /login = anon
                 /register =anon

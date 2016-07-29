@@ -5,13 +5,11 @@ CSS Credit: http://www.templatemo.com
 body {
 	margin: 0;
 	padding: 0;
-	color: #d6e5e4;
+	color: #222;
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 13px;
 	line-height: 1.5em; 
-	background-color: #61a8a4;
-	background-repeat: repeat;
-	background: url(../images/templatemo_body.jpg)
+	background-color: #EEE;
 }
 
 a, a:link, a:visited { 
@@ -98,15 +96,15 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 }
 
 #templatemo_wrapper {
-	width: 960px;
+	min-width: 960px;
 	margin: 0 auto;
-	padding: 30px 10px;
-	background: url(../images/templatemo_main.jpg) repeat-y
+	padding: 10px 40px;
+/* 	background: url(../images/templatemo_main.jpg) repeat-y */
 }
 
 #templatemo_header {
-	width: 960px;
-	padding: 40px 0 20px;
+	min-width: 960px;
+	padding: 10px 0 40px;
 	background: url(../images/templatemo_hr_divider.jpg) bottom repeat-x
 }
 
@@ -161,9 +159,8 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	color: #0b2726; 
 	text-align: center; 
 	letter-spacing: 2px; 
-	font-size: 11px; 
+	font-size: 40px; 
 	text-decoration: none; 
-	background: url(../images/templatemo_logo.png) no-repeat top center; 
 }
 
 #search_box { 
@@ -554,11 +551,11 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 }
 
 #sidebar, .one_third { 
-	width: 300px; 
+	width: 28%; 
 }
 
 #content, .two-third { 
-	width: 620px; 
+	width: 70%; 
 }
 
 .padding_right { 

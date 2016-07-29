@@ -19,14 +19,14 @@
 
 /*Top level menu link items style*/
 .ddsmoothmenu ul li a {
+	font-weight:bold;
 	display: block;
 	width: 92px;
 	line-height: 40px;
 	font-size: 14px;
-	color: #fff;	
+	color: #222;
 	text-align: center;
 	text-decoration: none;
-	font-weight: 400;
 	outline: none;
 }
 
@@ -45,7 +45,7 @@ display: inline-block;
 	margin: 0 0 0 6px;
 	display: none; /*collapse all sub menus to begin with*/
 	visibility: hidden;
-	background: #a7d1cf;
+	background: #EEE;
 }
 
 /*Sub level menu list items (undo style from Top level List Items)*/

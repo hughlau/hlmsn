@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hl.controller.aop.annotation.BusinessLog;
 import com.hl.entity.Hl_User;
 import com.hl.service.Hl_UserService;
 import com.hl.util.PropertiesUtil;
@@ -42,9 +43,9 @@ public class InitController extends BaseController{
 		return "register";
 	}
 	
+	@BusinessLog(methods="用户登录",module="验证")
 	@RequestMapping(value="login",method=RequestMethod.POST,produces="text/html;charset=utf-8")
 	public String login(String username,String password,String remember,HttpServletRequest request){
-
 		try {
             if ("".equals(username.trim()) || "".equals(password.trim())) {
                 request.setAttribute("error", getTipMsg("login.null"));

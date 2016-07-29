@@ -18,6 +18,9 @@
     <!-- 注解注入 -->
     <context:component-scan base-package="com.hl.service" /> 
     
+    <!-- springmvc统一异常处理方式 -->
+	<bean id="exceptionHandler" class="com.hl.exception.MyExceptionHandler"/>
+    
 	<!-- 引入配置文件 --> 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
 		<property name ="locations">

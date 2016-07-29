@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import com.hl.mapper.BaseMapper;
 import com.hl.service.BaseService;
 
-public class BaseServiceImpl<T> implements BaseService{
+public class BaseServiceImpl implements BaseService{
 
 	@Inject
     private BaseMapper baseMapper;
@@ -37,7 +37,7 @@ public class BaseServiceImpl<T> implements BaseService{
         return baseMapper.findByAttribute(key,value,clazz);
     }
 
-    public void deleteByAttribute(String key, String value, Class clazz)
+    public void deleteByAttribute(String key, String value, @SuppressWarnings("rawtypes") Class clazz)
             throws Exception {
         // TODO Auto-generated method stub
         baseMapper.deleteByAttribute(key,value,clazz);
@@ -48,7 +48,7 @@ public class BaseServiceImpl<T> implements BaseService{
         baseMapper.addEntity(formMap);
     }
 
-    public void batchSave(List formMap)  {
+    public void batchSave(@SuppressWarnings("rawtypes") List formMap)  {
         // TODO Auto-generated method stub
         baseMapper.batchSave(formMap);
     }
