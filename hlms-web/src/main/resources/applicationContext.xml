@@ -71,8 +71,6 @@
 	
 	<aop:config>
 	
-		
-		
 		<aop:aspect ref="logaspect">
 			<aop:pointcut expression="execution(* com.hl.service.*.*(..))" id="pc_log"/>
 			<aop:before method="before" pointcut-ref="pc_log"/>

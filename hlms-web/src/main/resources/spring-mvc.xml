@@ -19,10 +19,9 @@
 	<mvc:annotation-driven />
 	
 	<mvc:interceptors>
-	
 		<bean class="com.hl.interceptor.SpringMVCInterceptor"/> 
-	
 	</mvc:interceptors>
+	
 	<!-- 启动对@AspectJ注解的支持 -->
 	<!--通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller-->  
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
