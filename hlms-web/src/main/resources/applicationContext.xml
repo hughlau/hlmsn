@@ -67,6 +67,9 @@
 		<property name="basePackage" value="com.hl.mapper" />
 	</bean>
 	
+	<!-- 普通类调用service帮助类 -->
+	<bean id="springBeanFactoryUtils" class="com.hl.util.SpringBeanFactoryUtils"/>
+	
 	<bean id="logaspect" class="com.hl.aop.ServiceInterceptor" />
 	
 	<aop:config>

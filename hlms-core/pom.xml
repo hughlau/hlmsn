@@ -13,9 +13,10 @@
   <name>hlms-core</name>
   <url>http://maven.apache.org</url>
   <properties>
-  <spring.version>4.1.4.RELEASE</spring.version>
+        <spring.version>4.1.4.RELEASE</spring.version>
 		<shiro.version>1.2.3</shiro.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<poi.version>3.10-FINAL</poi.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
   
@@ -24,6 +25,31 @@
 		  <artifactId>hlms-entity</artifactId>
 		  <version>0.0.1-SNAPSHOT</version>
 	</dependency>
+
+<!-- ik 分词 -->
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-core</artifactId>
+        <version>3.6.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-queryparser</artifactId>
+        <version>5.0.0</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-queries</artifactId>
+        <version>5.0.0</version>
+    </dependency>
+    
+    <!-- dwr -->
+    <dependency>
+        <groupId>org.directwebremoting</groupId>
+        <artifactId>dwr</artifactId>
+        <version>3.0.M1</version>
+    </dependency>
 
   <!-- Spring -->
 	<dependency>
@@ -98,12 +124,38 @@
 		<scope>provided</scope>
 	</dependency>
 	
+	<!-- dwr -->
+    <dependency>
+        <groupId>org.directwebremoting</groupId>
+        <artifactId>dwr</artifactId>
+        <version>3.0.M1</version>
+    </dependency>
+	
 	<!-- javax提供的annotation -->
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
+    <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>1</version>
+    </dependency>
+	
+	<!-- poi -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>${poi.version}</version>
+    </dependency>
+    
+    <!-- json -->
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20160212</version>
+    </dependency>
 	
 	<dependency>
 		<groupId>org.aspectj</groupId>
